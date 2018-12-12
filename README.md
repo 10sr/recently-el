@@ -15,16 +15,19 @@ and `M-x recently-show` to display buffer to visit them again.
 Why not recentf?
 ----------------
 
-Besides built-in `recentf` is a great package, I want several features
-that this package does not provide:
+Although built-in `recentf` is a great package, I want several
+features that this package does not provide:
 
-- Record directories visited by dired
-  - `recentf-ext` also provides this, but this adds too many entries
-  - `recently` adds only the "deepest" paths when go into
+- Record directories visited with dired
+  - `recentf-ext` also provides this, but this sometimes adds too many
+    entries
+  - `recently` saves only the "deepest" paths when going into
     subdirectories
-- Share recent list amongh multiple Emacs instances
+- Share the file list among multiple Emacs instances
   - `sync-recentf` also provides this
 - Do not remove entries that are not found in filesystems
+  - Today it is common that a file is not found temporarily,
+    for example when using some VCSes like Git
 - Use `tabulated-list-mode` to show the list, instead of package
   specific mode
 
