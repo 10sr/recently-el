@@ -38,15 +38,15 @@
 
 ;;; Code:
 
+(require 'cl-lib)
+
 (defgroup recently nil
   "Recently visited files"
   :tag "Recently"
   :prefix "recently-"
   :group 'tools)
-
 (defcustom recently-file
-  (concat user-emacs-directory
-          "recently.el")
+  (locate-user-emacs-file "recently.el")
   "File to store recent file list."
   :type 'string
   :group 'recently)
@@ -174,14 +174,14 @@ read."
   "Show simplified list of recently opened files.
 BUFFER-NAME, if given, should be a string for buffer to create."
   (interactive)
-  (let ((bf (recently-show--create-buffer-tabulated buffer-name)))
+  (let ((bf (recently-show--create-buffer buffer-name)))
     (if bf
         (progn
           (setq recently-show-window-configuration (current-window-configuration))
           (pop-to-buffer bf))
       (message "No recent file!"))))
 
-(defun recently-show--create-buffer-tabulated (&optional buffer-name)
+(defun recently-show--create-buffer (&optional buffer-name)
   "Create buffer listing recently files.
 BUFFER-NAME, if given, should be a string for buffer to create."
   (let ((bname (or buffer-name
