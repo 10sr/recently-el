@@ -149,7 +149,9 @@ read."
 (defun recently-hook-buffer-file-name ()
   "Add current file."
   (when buffer-file-name
-    (recently-add buffer-file-name)))
+    (recently-add buffer-file-name))
+  ;; Return nil to call from `write-file-functions'
+  nil)
 
 (defun recently-hook-default-directory ()
   "Add current directory."
@@ -167,6 +169,9 @@ view list and visit again via `recently-show' command."
              'remove-hook)))
     (funcall f
              'find-file-hook
+             'recently-hook-buffer-file-name)
+    (funcall f
+             'write-file-functions
              'recently-hook-buffer-file-name)
     (funcall f
              'dired-mode-hook
