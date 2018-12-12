@@ -1,6 +1,6 @@
 ;;; recently.el --- Recently opened files  -*- lexical-binding: t; -*-
 
-;; Author: 10sr <8slashes+el [at] gmail [dot] com>
+;; Author: 10sr <8.slashes [at] gmail [dot] com>
 ;; URL: https://github.com/10sr/recently-el
 ;; Version: 0.1
 ;; Keywords: utility files
