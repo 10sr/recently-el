@@ -212,7 +212,7 @@ BUFFER-NAME, if given, should be a string for buffer to create."
   (setq tabulated-list-entries
         (mapcar (lambda (f)
                   (list f
-                        (vector (file-name-nondirectory f)
+                        (vector (or (file-name-nondirectory f) "")
                                 (if recently-show-abbreviate
                                     (abbreviate-file-name f)
                                   f))))
