@@ -15,8 +15,8 @@ and `M-x recently-show` to display buffer to visit them again.
 Why not recentf?
 ----------------
 
-Of course built-in `recentf` is a great package, but I want several
-features that this package does not provide:
+Of course built-in `recentf` is a great package, but it lacks some
+features that I would appreciate if it had:
 
 - Record directories visited with dired
   - `recentf-ext` also provides this, but this sometimes adds too many
