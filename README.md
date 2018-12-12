@@ -2,7 +2,7 @@ recently.el
 ===========
 
 
-Track recently opened files to visit them again later
+Track recently opened files to visit them again
 
 
 Usage
@@ -21,10 +21,13 @@ features that this package does not provide:
 - Record directories visited with dired
   - `recentf-ext` also provides this, but this sometimes adds too many
     entries
-  - `recently` saves only the "deepest" paths when going into
+  - `recently` records only the "deepest" paths when going into
     subdirectories
 - Share the file list among multiple Emacs instances
-  - `sync-recentf` also provides this
+  - `sync-recentf` also provides this, but the sync can only be
+    triggered with timer
+  - `recently` saves and restores the list every time when adding
+    files and reading the list, if necessary
 - Do not remove entries that are not found in filesystems
   - Today it is common that a file is not found temporarily,
     for example when using some VCSes like Git
