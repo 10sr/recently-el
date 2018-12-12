@@ -173,8 +173,6 @@ read."
 (defun recently-show (&optional buffer-name)
   "Show simplified list of recently opened files.
 BUFFER-NAME, if given, should be a string for buffer to create."
-  ;; If optional argument FILES is non-nil, it is a list of recently-opened
-  ;; files to choose from. It defaults to the whole recent list.
   (interactive)
   (let ((bf (recently-show--create-buffer-tabulated buffer-name)))
     (if bf
