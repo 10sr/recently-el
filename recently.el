@@ -288,7 +288,7 @@ BUFFER-NAME, if given, should be a string for buffer to create."
   (tabulated-list-print nil nil))
 
 (defun recently-show-tabulated-close ()
-  "Close recently-show window."
+  "Close `recently-show' window."
   (interactive)
   (kill-buffer (current-buffer))
   (set-window-configuration recently-show-window-configuration))
