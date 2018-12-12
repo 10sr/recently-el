@@ -10,7 +10,7 @@ Usage
 
 **`M-x recently-mode`** Start recording file paths on visiting them
 
-**`M-x recently-show`** Display buffer to visit them again
+**`M-x recently-show`** Display buffer to visit files again
 
 
 Why not recentf?
@@ -27,8 +27,8 @@ features that I would appreciate if it had:
 - Share the file list among multiple Emacs instances
   - `sync-recentf` also provides this, but the sync can only be
     triggered with timer
-  - `recently` saves and restores the list every time when adding
-    files and reading the list, if necessary
+  - `recently` saves and restores the list every time, if necessary,
+    when adding files and reading the list
 - Do not remove entries that are not found in filesystems
   - Today it is common that a file is not found temporarily,
     for example when using some VCSes like Git
