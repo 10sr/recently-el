@@ -146,20 +146,31 @@ read."
                  len)
     list))
 
-(defun recently-find-file-hook ()
+(defun recently-hook-buffer-file-name ()
   "Add current file."
   (when buffer-file-name
     (recently-add buffer-file-name)))
 
-(defun recently-dired-mode-hook ()
+(defun recently-hook-default-directory ()
   "Add current directory."
   (recently-add (expand-file-name default-directory)))
 
-(add-hook 'find-file-hook
-          'recently-find-file-hook)
-
-(add-hook 'dired-mode-hook
-          'recently-dired-mode-hook)
+;;;###autoload
+(define-minor-mode recently-mode
+  "Track recently opened files.
+When enabled save recently opened file path to `recently-list', and
+view list and visit again via `recently-show' command."
+  :global t
+  :lighter Rcntly
+  (let ((f (if recently-mode
+               'add-hook
+             'remove-hook)))
+    (funcall f
+             'find-file-hook
+             'recently-hook-buffer-file-name)
+    (funcall f
+             'dired-mode-hook
+             'recently-hook-default-directory)))
 
 ;;;;;;;;;;;;;;;;
 ;; recently-show
