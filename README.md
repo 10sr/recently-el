@@ -31,8 +31,8 @@ features that I would appreciate if it had:
 - Do not remove entries that are not found in filesystems
   - Today it is common that a file is not found temporarily,
     for example when using some VCSes like Git
-- Use `tabulated-list-mode` to show the list, instead of package
-  specific mode
+- Use `tabulated-list-mode` to show the list, instead of a special
+  mode for this
 
 
 License
