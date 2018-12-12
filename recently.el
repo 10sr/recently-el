@@ -4,7 +4,7 @@
 ;; URL: https://github.com/10sr/recently-el
 ;; Version: 0.1
 ;; Keywords: utility files
-;; Package-Requires: ((cl-lib "0.5"))
+;; Package-Requires: ((cl-lib "0.5") (emacs "24"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -35,6 +35,10 @@
 
 ;;; Commentary:
 
+;; Track recently opened files to visit them again.
+
+;; M-x recently-mode:  Start recording file paths on visiting them
+;; M-x recently-show:  Display buffer to visit them again
 
 
 ;;; Code:
@@ -164,6 +168,7 @@ When enabled save recently opened file path to `recently-list', and
 view list and visit again via `recently-show' command."
   :global t
   :lighter Rcntly
+  :require 'recently
   (let ((f (if recently-mode
                'add-hook
              'remove-hook)))
