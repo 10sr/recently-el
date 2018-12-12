@@ -4,6 +4,7 @@
 ;; URL: https://github.com/10sr/recently-el
 ;; Version: 0.1
 ;; Keywords: utility files
+;; Package-Requires: ((cl-lib "0.5"))
 
 ;; This file is not part of GNU Emacs.
 
