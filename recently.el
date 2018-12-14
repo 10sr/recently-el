@@ -70,7 +70,7 @@
 (add-to-list 'recently-excludes
              (eval-when-compile (rx "/COMMIT_EDITMSG" eot)))
 
-(defvar recently-list
+(defvar recently--list
   '()
   "Recently list.")
 
@@ -81,9 +81,9 @@
 (defun recently-write ()
   "Write to file."
   ;; Failsafe to avoid purging all existing entries
-  (cl-assert recently-list)
+  (cl-assert recently--list)
   (with-temp-buffer
-    (prin1 recently-list
+    (prin1 recently--list
            (current-buffer))
     (write-region (point-min)
                   (point-max)
@@ -95,14 +95,14 @@
     (with-temp-buffer
       (insert-file-contents recently-file)
       (goto-char (point-min))
-      (setq recently-list
+      (setq recently--list
             (read (current-buffer))))
     (setq recently-file-mtime
           (nth 5
                (file-attributes recently-file)))))
 
 (defun recently-reload ()
-  "Reload file and update `recently-list' value.
+  "Reload file and update `recently--list' value.
 
 This function does nothing when there is no update to `recently-file' since last
 read."
@@ -123,7 +123,7 @@ read."
                  if (string-match re path) return nil
                  finally return t)
     (recently-reload)
-    (let* ((l (cl-copy-list recently-list))
+    (let* ((l (cl-copy-list recently--list))
            (l (delete path
                       l))
            (l (cl-loop for e in l
@@ -133,9 +133,9 @@ read."
                     l))
            (l (recently--truncate l
                                   recently-max)))
-      (unless (equal recently-list
+      (unless (equal recently--list
                      l)
-        (setq recently-list l)
+        (setq recently--list l)
         (recently-write)
         (setq recently-file-mtime
               (nth 5
@@ -164,7 +164,7 @@ read."
 ;;;###autoload
 (define-minor-mode recently-mode
   "Track recently opened files.
-When enabled save recently opened file path to `recently-list', and
+When enabled it records recently opened file paths, and
 view list and visit again via `recently-show' command."
   :global t
   :lighter Rcntly
@@ -218,6 +218,7 @@ BUFFER-NAME, if given, should be a string for buffer to create."
 
 (defun recently-show--set-tabulated-list-mode-variables ()
   "Set variables for `tabulated-list-mode'."
+  ;; TODO: Define function recently-list and use it
   (recently-reload)
   (setq tabulated-list-entries
         (mapcar (lambda (f)
@@ -226,7 +227,7 @@ BUFFER-NAME, if given, should be a string for buffer to create."
                                 (if recently-show-abbreviate
                                     (abbreviate-file-name f)
                                   f))))
-                recently-list
+                recently--list
                 ))
   (let ((max
          (apply 'max
