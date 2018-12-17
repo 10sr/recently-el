@@ -78,7 +78,7 @@
   nil
   "Modified time of `recently-file' when last read file.")
 
-(defun recently-write ()
+(defun recently--write ()
   "Write to file."
   ;; Failsafe to avoid purging all existing entries
   (cl-assert recently--list)
@@ -89,7 +89,7 @@
                   (point-max)
                   recently-file)))
 
-(defun recently-read ()
+(defun recently--read ()
   "Read file."
   (when (file-readable-p recently-file)
     (with-temp-buffer
@@ -101,7 +101,7 @@
           (nth 5
                (file-attributes recently-file)))))
 
-(defun recently-reload ()
+(defun recently--reload ()
   "Reload file and update `recently--list' value.
 
 This function does nothing when there is no update to `recently-file' since last
@@ -110,7 +110,7 @@ read."
              (not (equal recently-file-mtime
                          (nth 5
                               (file-attributes recently-file)))))
-    (recently-read)
+    (recently--read)
     (cl-assert (equal recently-file-mtime
                       (nth 5
                            (file-attributes recently-file))))))
@@ -122,7 +122,7 @@ read."
   (when (cl-loop for re in recently-excludes
                  if (string-match re path) return nil
                  finally return t)
-    (recently-reload)
+    (recently--reload)
     (let* ((l (cl-copy-list recently--list))
            (l (delete path
                       l))
@@ -131,22 +131,22 @@ read."
                        collect e))
            (l (cons path
                     l))
-           (l (recently--truncate l
-                                  recently-max)))
+           (l (recently---truncate l
+                                   recently-max)))
       (unless (equal recently--list
                      l)
         (setq recently--list l)
-        (recently-write)
+        (recently--write)
         (setq recently-file-mtime
               (nth 5
                    (file-attributes recently-file)))))))
 
 (defun recently-list ()
   "Get latest recently opened file list."
-  (recently-reload)
+  (recently--reload)
   recently--list)
 
-(defun recently--truncate (list len)
+(defun recently---truncate (list len)
   "Truncate LIST to LEN."
   (if (> (length list)
          len)
