@@ -141,6 +141,11 @@ read."
               (nth 5
                    (file-attributes recently-file)))))))
 
+(defun recently-list ()
+  "Get latest recently opened file list."
+  (recently-reload)
+  recently--list)
+
 (defun recently--truncate (list len)
   "Truncate LIST to LEN."
   (if (> (length list)
@@ -218,8 +223,6 @@ BUFFER-NAME, if given, should be a string for buffer to create."
 
 (defun recently-show--set-tabulated-list-mode-variables ()
   "Set variables for `tabulated-list-mode'."
-  ;; TODO: Define function recently-list and use it
-  (recently-reload)
   (setq tabulated-list-entries
         (mapcar (lambda (f)
                   (list f
@@ -227,7 +230,7 @@ BUFFER-NAME, if given, should be a string for buffer to create."
                                 (if recently-show-abbreviate
                                     (abbreviate-file-name f)
                                   f))))
-                recently--list
+                (recently-list)
                 ))
   (let ((max
          (apply 'max
