@@ -39,4 +39,5 @@ features that I would appreciate if it had:
 License
 -------
 
-This software is unlicensed. See `LICENSE` for details.
+This software is licensed under GPL Version 3 (or any later version).
+See `LICENSE` for details.
