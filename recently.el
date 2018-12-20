@@ -24,7 +24,7 @@
 
 ;; Track recently opened files to visit them again.
 
-;; M-x recently-mode:  Start recording file paths on visiting them
+;; M-x recently-mode:  Start saving file paths on visiting them
 ;; M-x recently-show:  Display buffer that shows list of recently visited files
 
 
@@ -185,7 +185,7 @@ view list and visit again via `recently-show' command."
 
 ;;;###autoload
 (defun recently-show (&optional buffer-name)
-  "Show simplified list of recently opened files.
+  "Show buffet that lists recently opened files.
 BUFFER-NAME, if given, should be a string for buffer to create."
   (interactive)
   (let ((bf (recently-show--create-buffer buffer-name)))

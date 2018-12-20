@@ -8,7 +8,7 @@ Track recently opened files to visit them again
 Usage
 -----
 
-**`M-x recently-mode`** Start recording file paths on visiting them
+**`M-x recently-mode`** Start saving file paths on visiting them
 
 **`M-x recently-show`** Display buffer that shows list of recently visited files
 
