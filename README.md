@@ -1,3 +1,7 @@
+[![MELPA](https://melpa.org/packages/recently-badge.svg)](https://melpa.org/#/recently)
+[![MELPA Stable](https://stable.melpa.org/packages/recently-badge.svg)](https://stable.melpa.org/#/recently)
+
+
 recently.el
 ===========
 
