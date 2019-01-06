@@ -1,4 +1,4 @@
-;;; recently.el --- Recently opened files  -*- lexical-binding: t; -*-
+;;; recently.el --- Track recently opened files to visit them again  -*- lexical-binding: t; -*-
 
 ;; Author: 10sr <8.slashes [at] gmail [dot] com>
 ;; URL: https://github.com/10sr/recently-el
