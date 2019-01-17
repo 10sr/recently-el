@@ -159,7 +159,7 @@ read."
 When enabled it records recently opened file paths, and
 view list and visit again via `recently-show' command."
   :global t
-  :lighter Rcntly
+  :lighter " Rcntly"
   :require 'recently
   (let ((f (if recently-mode
                'add-hook
