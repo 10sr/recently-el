@@ -69,12 +69,13 @@
   "Write to file."
   ;; Failsafe to avoid purging all existing entries
   (cl-assert recently--list)
-  (with-temp-buffer
-    (prin1 recently--list
-           (current-buffer))
-    (write-region (point-min)
-                  (point-max)
-                  recently-file)))
+  (let ((inhibit-message t))
+    (with-temp-buffer
+      (prin1 recently--list
+             (current-buffer))
+      (write-region (point-min)
+                    (point-max)
+                    recently-file))))
 
 (defun recently--read ()
   "Read file."
