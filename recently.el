@@ -112,6 +112,8 @@ read."
                  finally return t)
     (recently--reload)
     (let* ((l (cl-copy-list recently--list))
+           (l (cl-remove-if-not 'stringp
+                                l))
            (l (delete path
                       l))
            (l (cl-loop for e in l
