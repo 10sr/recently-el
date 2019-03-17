@@ -46,7 +46,7 @@
 (defcustom recently-max
   100
   "Recently list max length."
-  :type 'int
+  :type 'integer
   :group 'recently)
 
 (defcustom recently-excludes
