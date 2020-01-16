@@ -20,7 +20,7 @@ Usage
 Why not recentf?
 ----------------
 
-Of course built-in `recentf` is a great package, but it lacks some
+Of course built-in `recentf` is a great package, but it does not have some
 features that I would appreciate if it had:
 
 - Record directories visited with dired
