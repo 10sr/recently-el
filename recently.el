@@ -38,7 +38,7 @@
   :prefix "recently-"
   :group 'tools)
 (defcustom recently-file
-  (locate-user-emacs-file "recently.el")
+  (expand-file-name (locate-user-emacs-file "recently.el"))
   "File to store recent file list."
   :type 'string
   :group 'recently)
