@@ -1,3 +1,4 @@
+[![Build Status](https://github.com/10sr/recently-el/workflows/CI/badge.svg)](https://github.com/10sr/recently-el/actions)
 [![MELPA](https://melpa.org/packages/recently-badge.svg)](https://melpa.org/#/recently)
 [![MELPA Stable](https://stable.melpa.org/packages/recently-badge.svg)](https://stable.melpa.org/#/recently)
 
