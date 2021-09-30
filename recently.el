@@ -175,6 +175,9 @@ view list and visit again via `recently-show' command."
              'write-file-functions
              'recently-hook-buffer-file-name)
     (funcall f
+             'after-set-visited-file-name-hook
+             'recently-hook-buffer-file-name)
+    (funcall f
              'dired-mode-hook
              'recently-hook-default-directory)))
 
